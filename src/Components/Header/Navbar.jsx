@@ -18,7 +18,10 @@ const Navbar = () => {
 
     const navLinks = <>
         <li><NavLink className="btn btn-neutral hover:bg-violet-800 hover:text-gray-100 mr-5" to='/'>Home</NavLink></li>
-        <li><NavLink className="btn btn-neutral hover:bg-violet-800 hover:text-gray-100 mr-5" to='/login'>Login</NavLink></li>
+        <li><NavLink className="btn btn-neutral hover:bg-violet-800 hover:text-gray-100 mr-5" to='/secrets'>Secrets</NavLink></li>
+        {
+            !user && <li><NavLink className="btn btn-neutral hover:bg-violet-800 hover:text-gray-100 mr-5" to='/login'>Login</NavLink></li>
+        }
         <li><NavLink className="btn btn-neutral hover:bg-violet-800 hover:text-gray-100" to='/register'>Register</NavLink></li>
     </>
 

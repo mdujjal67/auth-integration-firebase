@@ -12,6 +12,8 @@ import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
 import AuthProvider from './Providers/AuthProvider';
 import { Toaster } from 'react-hot-toast';
+import YourSecrets from './Components/Your Secret/YourSecrets';
+import PrivateRoutes from './Components/Routes/PrivateRoutes';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>
+      },
+      {
+        path: "/secrets",
+        element: <PrivateRoutes><YourSecrets></YourSecrets></PrivateRoutes>
       }
     ]
   },
