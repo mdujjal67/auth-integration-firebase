@@ -14,11 +14,13 @@ import AuthProvider from './Providers/AuthProvider';
 import { Toaster } from 'react-hot-toast';
 import YourSecrets from './Components/Your Secret/YourSecrets';
 import PrivateRoutes from './Components/Routes/PrivateRoutes';
+import NotFoundPage from './Components/NotFoundPage/NotFoundPage';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <NotFoundPage></NotFoundPage>,
     children: [
       {
         index: true,
