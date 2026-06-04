@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useState } from "react";
-import {createUserWithEmailAndPassword } from "firebase/auth";
+import { createContext, useEffect, useState } from "react";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import auth from "../Firebase/firebase.config";
 export const AuthContext = createContext(null)
 
@@ -11,7 +11,25 @@ const AuthProvider = ({ children }) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
-    const authInfo = { user, createUser}
+    const signInUser = (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password)
+    }
+
+    const signOutUser = () => {
+        return signOut(auth)
+    }
+
+    useEffect(() => {
+        const unSubscribe = onAuthStateChanged(auth, currentUser => {
+            setUser(currentUser);
+            console.log('I am observing your', currentUser)
+        });
+        return () => {
+            unSubscribe()
+        }
+    }, [])
+
+    const authInfo = { user, createUser, signInUser, signOutUser }
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

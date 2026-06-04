@@ -17,8 +17,11 @@ const Register = () => {
         // create user
         createUser(email, password)
         .then(result =>{
-            console.log(result);
-            toast.success('User Created Successfully')
+            console.log(result.user);
+            e.target.reset(); //clear the input field after user created
+            toast.success('User Created Successfully', {
+                duration: 2500 ,
+            });
         })
         .catch(error => {
             console.log(error)

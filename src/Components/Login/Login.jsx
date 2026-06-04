@@ -1,12 +1,26 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
+import toast from "react-hot-toast";
 
 const Login = () => {
 
+    const { signInUser } = useContext(AuthContext)
     const handleLogin = (e) => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(email, password)
+        console.log(email, password);
+
+        // Sign-in user
+        signInUser(email, password)
+        .then(result => {
+            console.log(result);
+            toast.success('Login Successful');
+        })
+        .catch(error => {
+            console.log(error)
+        })
     }
 
     return (
@@ -32,7 +46,7 @@ const Login = () => {
                         </div>
                         <button className="btn btn-neutral hover:bg-gray-200 hover:text-gray-800 mt-4">Login</button>
                     </form>
-                    <button  className="btn btn-accent hover:bg-gray-200">Google Login</button>
+                    <button className="btn btn-accent hover:bg-gray-200">Google Login</button>
                     <p>Don't have an account? <Link className="text-blue-500 hover:underline" to="/register">Register</Link></p>
                 </div>
             </div>
