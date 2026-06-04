@@ -6,22 +6,27 @@ export const AuthContext = createContext(null)
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState();
+    const [loading, setLoading] = useState(true)
 
     const createUser = (email, password) => {
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     const signInUser = (email, password) => {
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
     const signOutUser = () => {
+        setLoading(true)
         return signOut(auth)
     }
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
+            setLoading(false)
             console.log('I am observing you:', currentUser)
         });
         return () => {
@@ -29,8 +34,10 @@ const AuthProvider = ({ children }) => {
         }
     }, [])
 
-    const authInfo = { user,
+    const authInfo = { 
+        user,
         createUser,
+        loading,
         signInUser,
         signOutUser,
     }
