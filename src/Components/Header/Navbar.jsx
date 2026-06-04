@@ -1,11 +1,25 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 
 const Navbar = () => {
+    const { user, signOutUser } = useContext(AuthContext);
+
+    const handleSignOut = () => {
+        signOutUser()
+            .then(() => {
+                console.log("User Signed Out!")
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
     const navLinks = <>
-        <li><NavLink className="btn btn-neutral hover:bg-violet-800 hover:text-gray-100 mr-5"  to='/'>Home</NavLink></li>
-        <li><NavLink className="btn btn-neutral hover:bg-violet-800 hover:text-gray-100 mr-5"  to='/login'>Login</NavLink></li>
-        <li><NavLink className="btn btn-neutral hover:bg-violet-800 hover:text-gray-100"  to='/register'>Register</NavLink></li>
+        <li><NavLink className="btn btn-neutral hover:bg-violet-800 hover:text-gray-100 mr-5" to='/'>Home</NavLink></li>
+        <li><NavLink className="btn btn-neutral hover:bg-violet-800 hover:text-gray-100 mr-5" to='/login'>Login</NavLink></li>
+        <li><NavLink className="btn btn-neutral hover:bg-violet-800 hover:text-gray-100" to='/register'>Register</NavLink></li>
     </>
 
     return (
@@ -33,7 +47,12 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn btn-accent hover:bg-gray-800 hover:text-gray-100">Button</a>
+                    {
+                        user && <>
+                            <p className="mr-3 font-bold">{user.email}</p>
+                            <a onClick={handleSignOut} className="btn btn-accent hover:bg-gray-800 hover:text-gray-100">Sign Out</a>
+                        </>
+                    }
                 </div>
             </div>
         </div>

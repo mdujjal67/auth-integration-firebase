@@ -22,14 +22,18 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
-            console.log('I am observing your', currentUser)
+            console.log('I am observing you:', currentUser)
         });
         return () => {
             unSubscribe()
         }
     }, [])
 
-    const authInfo = { user, createUser, signInUser, signOutUser }
+    const authInfo = { user,
+        createUser,
+        signInUser,
+        signOutUser,
+    }
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

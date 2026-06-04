@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import toast from "react-hot-toast";
 
 const Login = () => {
+    const [loginError, setLoginError] = useState('')
 
     const { signInUser } = useContext(AuthContext)
     const handleLogin = (e) => {
@@ -11,6 +12,7 @@ const Login = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
         console.log(email, password);
+        setLoginError(''); //clear the error message after success
 
         // Sign-in user
         signInUser(email, password)
@@ -19,7 +21,8 @@ const Login = () => {
             toast.success('Login Successful');
         })
         .catch(error => {
-            console.log(error)
+            console.log(error);
+            setLoginError('Please enter your correct email and password')
         })
     }
 
@@ -38,9 +41,9 @@ const Login = () => {
                             placeholder="Enter Your Email" required />
                         <label className="label">Password</label>
                         <input type="password" name="password" className="input" placeholder="Enter Your Password" required />
-                        {/* {
+                        {
                             loginError && <span className="text-red-500 text-left">{loginError}</span>
-                        } */}
+                        }
                         <div className="text-left"><a className="link link-hover text-l">Forgot password?</a>
                             <p className="text-red-500 text-left"></p>
                         </div>
