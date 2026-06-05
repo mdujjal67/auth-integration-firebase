@@ -15,6 +15,7 @@ import { Toaster } from 'react-hot-toast';
 import YourSecrets from './Components/Your Secret/YourSecrets';
 import PrivateRoutes from './Components/Routes/PrivateRoutes';
 import NotFoundPage from './Components/NotFoundPage/NotFoundPage';
+import Profile from './Components/Profile/Profile';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/secrets",
         element: <PrivateRoutes><YourSecrets></YourSecrets></PrivateRoutes>
+      },
+      {
+        path: "/profile",
+        element: <PrivateRoutes><Profile></Profile></PrivateRoutes>
       }
     ]
   },
