@@ -31,7 +31,7 @@ const YourSecrets = () => {
                                             <rect width="32" height="200" x="312" y="216"></rect>
                                             <path d="M328,88V40c0-13.458-9.488-24-21.6-24H205.6C193.488,16,184,26.542,184,40V88H64v32H448V88ZM216,48h80V88H216Z"></path>
                                         </svg>
-                                        <span>Remove</span>
+                                        <Link className="hover:text-red-500" to="/under-development">Remove</Link>
                                     </button>
                                     <button type="button" className="flex items-center px-2 py-1 space-x-1">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-4 h-4 fill-current">
@@ -66,7 +66,7 @@ const YourSecrets = () => {
                                             <rect width="32" height="200" x="312" y="216"></rect>
                                             <path d="M328,88V40c0-13.458-9.488-24-21.6-24H205.6C193.488,16,184,26.542,184,40V88H64v32H448V88ZM216,48h80V88H216Z"></path>
                                         </svg>
-                                        <span>Remove</span>
+                                        <Link className="hover:text-red-500" to="/under-development">Remove</Link>
                                     </button>
                                     <button type="button" className="flex items-center px-2 py-1 space-x-1">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-4 h-4 fill-current">
@@ -101,7 +101,7 @@ const YourSecrets = () => {
                                             <rect width="32" height="200" x="312" y="216"></rect>
                                             <path d="M328,88V40c0-13.458-9.488-24-21.6-24H205.6C193.488,16,184,26.542,184,40V88H64v32H448V88ZM216,48h80V88H216Z"></path>
                                         </svg>
-                                        <span>Remove</span>
+                                        <Link className="hover:text-red-500" to="/under-development">Remove</Link>
                                     </button>
                                     <button type="button" className="flex items-center px-2 py-1 space-x-1">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-4 h-4 fill-current">

@@ -16,6 +16,7 @@ import YourSecrets from './Components/Your Secret/YourSecrets';
 import PrivateRoutes from './Components/Routes/PrivateRoutes';
 import NotFoundPage from './Components/NotFoundPage/NotFoundPage';
 import Profile from './Components/Profile/Profile';
+import UnderDevelopment from './Components/UnderDevelopment/UnderDevelopment';
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <PrivateRoutes><Profile></Profile></PrivateRoutes>
+      },
+      {
+        path: "/under-development",
+        element: <UnderDevelopment></UnderDevelopment>
       }
     ]
   },
